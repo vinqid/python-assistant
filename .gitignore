@@ -1,0 +1,15 @@
+.venv/
+.vscode/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+data/
+tmp/
+.pytest_cache/
+.coverage
+.DS_Store
+Thumbs.db
+*.log
+__screenshots__/

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Помощник по Python</title>
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="/static/styles.css">
+    <script src="/static/app.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="/">Python<span class="brand-divider">/</span><span class="brand-caption">помощник</span></a>
+            <span class="header-note">Вопросы по делу. Ответы с примерами.</span>
+        </div>
+    </header>
+
+    <main>
+        <p id="startup" class="startup" role="status">Загрузка…</p>
+
+        <section id="login-screen" class="login-panel" aria-labelledby="login-title" hidden>
+            <p class="eyebrow">Доступ к чату</p>
+            <h1 id="login-title">Вход по ключу</h1>
+            <p class="intro">Помощник по Python: объяснит код, поможет найти ошибку и разобраться с библиотекой.</p>
+
+            <form id="login-form" novalidate>
+                <label for="access-key">Ключ доступа</label>
+                <input id="access-key" name="access-key" type="password" minlength="8" maxlength="255" autocomplete="current-password" autocapitalize="none" spellcheck="false" aria-describedby="key-hint login-error" required>
+                <p id="key-hint" class="field-hint">8–255 символов: латиница, цифры, дефис и подчёркивание.</p>
+                <p id="login-error" class="error" role="alert"></p>
+                <button id="login-button" class="primary-button" type="submit" disabled>Войти</button>
+            </form>
+        </section>
+
+        <section id="chat-screen" class="chat-panel" aria-labelledby="chat-title" hidden>
+            <div class="chat-heading">
+                <div>
+                    <h1 id="chat-title">Вопросы по Python</h1>
+                    <p class="chat-description">Код, ошибки, библиотеки и практика разработки.</p>
+                </div>
+                <button id="logout-button" class="text-button" type="button">Выйти</button>
+            </div>
+
+            <p id="history-status" class="field-hint" role="status"></p>
+            <div id="history-error-panel" class="history-error" hidden>
+                <p id="history-error" class="error" role="alert"></p>
+                <button id="reload-history" class="text-button" type="button">Повторить загрузку</button>
+            </div>
+
+            <div id="empty-state" class="empty-state" hidden>
+                <h2>Что хотите разобрать?</h2>
+                <p>Опишите задачу или вставьте небольшой фрагмент кода.</p>
+                <div class="examples" aria-label="Примеры вопросов">
+                    <button class="example-button" type="button" data-question="Чем список отличается от кортежа в Python?">Списки и кортежи</button>
+                    <button class="example-button" type="button" data-question="Как работает конструкция try / except в Python?">Обработка ошибок</button>
+                    <button class="example-button" type="button" data-question="Покажи простой пример декоратора в Python.">Декораторы</button>
+                </div>
+            </div>
+
+            <div id="messages" class="messages" role="log" aria-label="История переписки" aria-live="polite" aria-relevant="additions"></div>
+
+            <form id="message-form" class="composer" novalidate>
+                <label for="message-input">Ваш вопрос</label>
+                <textarea id="message-input" name="message" rows="4" placeholder="Например: почему функция возвращает None?" aria-describedby="message-hint message-error" required></textarea>
+                <div class="composer-actions">
+                    <p id="message-hint" class="field-hint">Enter — отправить, Shift + Enter — новая строка</p>
+                    <span id="character-count" class="character-count">0 / 500</span>
+                    <button id="send-button" class="primary-button" type="submit" disabled>Отправить</button>
+                </div>
+                <p id="send-status" class="field-hint" role="status"></p>
+                <p id="message-error" class="error" role="alert"></p>
+            </form>
+
+            <p class="chat-footnote">История сохраняется. Каждый вопрос обрабатывается отдельно. Ответы модели могут содержать ошибки.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">Помощник по Python</footer>
+</body>
+</html>
